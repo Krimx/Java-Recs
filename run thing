@@ -1,0 +1,18 @@
+public static void run() {
+		long lastTime = System.nanoTime(); //Init time var
+	    final double ns = 1000000000.0 / tps; //Control ticks per second
+	    double delta = 0;
+	    while(running){ //Game loop boolean
+	        long now = System.nanoTime(); //Far for now time
+	        delta += (now - lastTime) / ns; //While in running loop, wait until two time vars are equal
+	        lastTime = now; //Reset
+	        while(delta >= 1){ //Wait until time is less than one
+	        	if (keys.ESCAPETYPED()) running = false;
+	        	updateSys();
+	        	mainLoop();
+	            delta--; //Remove
+	            }
+	        } 
+
+	    System.exit(0); //Once done with game loop, shut everything down
+	}
